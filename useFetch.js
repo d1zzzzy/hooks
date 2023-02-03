@@ -24,8 +24,8 @@ function useFetch(url, options = {}, dependencies = []) {
       if (response.ok) return response.json()
 
       return response.json().then(json => Promise.reject(json))
-    }, dependencies)
-  })
+    })
+  }, dependencies)
 
   return { loading, error, value, abort }
 }
