@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react"
+import { useCallback, useRef } from "react"
 import useAsync from "./useAsync"
 
 const DefaultOptions = {
@@ -8,15 +8,18 @@ const DefaultOptions = {
 }
 
 function useFetch(url, options = {}, dependencies = []) {
-  const abortController = useMemo(() => new AbortController(), [])
+  const abortController = useRef(new AbortController())
 
-  const abort = useCallback(() => abortController.abort(), [abortController])
+  const abort = useCallback(() => {
+    abortController.current.abort()
+    abortController.current = new AbortController()
+  }, [])
 
   const { loading, error, value } = useAsync(() => {
     return fetch(
       url,
       {
-        signal: abortController.signal,
+        signal: abortController.current.signal,
         ...DefaultOptions,
         ...options,
       }
