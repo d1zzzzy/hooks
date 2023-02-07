@@ -8,6 +8,8 @@
 
 [useStateWithHistory](https://github.com/d1zzzzy/hooks/blob/main/useStateWithHistory.js)
 
+[useStateWithValidation](https://github.com/d1zzzzy/hooks/blob/main/useStateWithValidation.js)
+
 [useStorage](https://github.com/d1zzzzy/hooks/blob/main/useStorage.js)
 
 [useTimeout](https://github.com/d1zzzzy/hooks/blob/main/useTimeout.js)
